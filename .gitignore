@@ -2,6 +2,7 @@
 data/
 certs/
 .env
+.sandbox-ssh/
 
 # Logs
 logs/
