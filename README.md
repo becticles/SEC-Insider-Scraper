@@ -1,6 +1,7 @@
 # SEC Form 4 Tracker
 
 A lightweight stock transaction tracker for SEC Form 4 filings over the trailing seven calendar days.
+Originally built on Windows, but there is a docker file so it can be platform-agnostic.
 
 ## Screenshots
 
