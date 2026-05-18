@@ -20,6 +20,7 @@ const elements = {
 const number = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 });
 const compactMoney = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: 1 });
+const compactNumber = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
 const percent = new Intl.NumberFormat("en-US", { style: "percent", maximumFractionDigits: 1 });
 const dateTime = new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short" });
 
@@ -82,7 +83,7 @@ function render() {
 
   elements.saleCount.textContent = number.format(rows.length);
   elements.saleValue.textContent = compactMoney.format(saleValue);
-  elements.sharesSold.textContent = number.format(sharesSold);
+  elements.sharesSold.textContent = compactNumber.format(sharesSold);
 
   if (!rows.length) {
     elements.sales.innerHTML = `<tr><td colspan="11">No matching holding sales.</td></tr>`;

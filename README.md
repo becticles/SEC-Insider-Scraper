@@ -2,6 +2,20 @@
 
 A lightweight stock transaction tracker for SEC Form 4 filings over the trailing seven calendar days.
 
+## Screenshots
+
+### Dashboard
+
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Large Trades
+
+![Large trades](docs/screenshots/large-trades.png)
+
+### 25%+ Holding Sales
+
+![25%+ holding sales](docs/screenshots/holding-sales.png)
+
 ## Run
 
 ```powershell
