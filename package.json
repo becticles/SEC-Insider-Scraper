@@ -1,0 +1,15 @@
+{
+  "name": "sec-form-4-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stock transaction tracker from SEC Form 4 filings over the trailing 7 days.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "cert": "powershell -ExecutionPolicy Bypass -File scripts/create-localhost-cert.ps1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

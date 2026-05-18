@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>25%+ Holding Sales</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">SEC Form 4 filings</p>
+          <h1>25%+ holding sales</h1>
+        </div>
+        <a class="nav-link" href="/">All trades</a>
+      </section>
+
+      <section class="summary-grid" aria-label="Summary">
+        <div class="metric">
+          <span class="label">Sales</span>
+          <strong id="saleCount">-</strong>
+        </div>
+        <div class="metric">
+          <span class="label">Sale value</span>
+          <strong id="saleValue">-</strong>
+        </div>
+        <div class="metric">
+          <span class="label">Shares sold</span>
+          <strong id="sharesSold">-</strong>
+        </div>
+        <div class="metric">
+          <span class="label">Threshold</span>
+          <strong id="thresholdValue">25%</strong>
+        </div>
+      </section>
+
+      <section class="controls large-controls" aria-label="Filters">
+        <label>
+          <span>Search</span>
+          <input id="search" type="search" placeholder="Ticker, issuer, insider">
+        </label>
+        <label>
+          <span>Range</span>
+          <select id="rangeFilter">
+            <option value="31">Monthly</option>
+            <option value="93">3 months</option>
+            <option value="180" selected>6 months</option>
+          </select>
+        </label>
+        <label>
+          <span>Minimum holding sold</span>
+          <input id="threshold" type="number" min="1" max="100" step="1" value="25">
+        </label>
+      </section>
+
+      <section class="table-wrap" aria-live="polite">
+        <div id="status" class="status">Loading holding sales...</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Ticker</th>
+              <th>Issuer</th>
+              <th>Insider</th>
+              <th>Security</th>
+              <th class="numeric">Holding sold</th>
+              <th class="numeric">Since sale</th>
+              <th class="numeric">Shares sold</th>
+              <th class="numeric">Shares after</th>
+              <th class="numeric">Value</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="sales"></tbody>
+        </table>
+      </section>
+    </main>
+    <script src="/holding-sales.js" type="module"></script>
+  </body>
+</html>

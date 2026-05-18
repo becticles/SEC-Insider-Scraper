@@ -1,0 +1,17 @@
+services:
+  form4-tracker:
+    build: .
+    container_name: sec-form4-tracker
+    restart: unless-stopped
+    environment:
+      HTTP_PORT: "3080"
+      HTTPS_PORT: "3443"
+      SEC_USER_AGENT: "${SEC_USER_AGENT:-SEC Form 4 Tracker set SEC_USER_AGENT}"
+      COLLECTOR_TOKEN: "${COLLECTOR_TOKEN:?Set COLLECTOR_TOKEN in .env}"
+      HTTPS_PFX_PASSPHRASE: "${HTTPS_PFX_PASSPHRASE:-}"
+    ports:
+      - "3080:3080"
+      - "3443:3443"
+    volumes:
+      - ./data:/app/data
+      - ./certs:/app/certs:ro

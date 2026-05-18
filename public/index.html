@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Weekly SEC Form 4 Tracker</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">SEC Form 4 filings</p>
+          <h1 id="pageTitle">Weekly insider stock transactions</h1>
+        </div>
+        <button id="refresh" class="icon-button" type="button" title="Refresh transactions" aria-label="Refresh transactions">
+          <span aria-hidden="true">R</span>
+        </button>
+      </section>
+
+      <section class="summary-grid" aria-label="Summary">
+        <div class="metric">
+          <span class="label">Transactions</span>
+          <strong id="transactionCount">-</strong>
+        </div>
+        <div class="metric">
+          <span class="label">Purchase value</span>
+          <strong id="purchaseValue">-</strong>
+        </div>
+        <div class="metric">
+          <span class="label">Sale value</span>
+          <strong id="saleValue">-</strong>
+        </div>
+        <div class="metric">
+          <span class="label">History rows</span>
+          <strong id="historyRows">-</strong>
+        </div>
+      </section>
+
+      <section class="insights" aria-label="Market read">
+        <div class="insight-band">
+          <div>
+            <span class="label">Net insider flow</span>
+            <strong id="netFlow">-</strong>
+          </div>
+          <div>
+            <span class="label">Buy / sale mix</span>
+            <strong id="buySellMix">-</strong>
+          </div>
+          <div>
+            <span class="label">$5M+ large trades</span>
+            <strong><a id="largeTradeCount" href="/large">-</a></strong>
+          </div>
+          <div>
+            <span class="label">25%+ holding sales</span>
+            <strong><a id="highHoldingSaleCount" href="/holding-sales">-</a></strong>
+          </div>
+        </div>
+        <div class="signal-grid">
+          <div>
+            <span class="label">Top 10 accumulation</span>
+            <div id="topAccumulation" class="signal-list">-</div>
+          </div>
+          <div>
+            <span class="label">Top 10 distribution</span>
+            <div id="topDistribution" class="signal-list">-</div>
+          </div>
+          <div>
+            <span class="label">Top 10 cluster buys</span>
+            <div id="clusterBuying" class="signal-list">-</div>
+          </div>
+          <div>
+            <span class="label">Top 10 cluster sales</span>
+            <div id="clusterSales" class="signal-list">-</div>
+          </div>
+        </div>
+        <div>
+          <span id="activityLabel" class="label">Daily activity</span>
+          <div id="dailyActivity" class="daily-activity"></div>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Filters">
+        <label>
+          <span>Search</span>
+          <input id="search" type="search" placeholder="Ticker, issuer, insider">
+        </label>
+        <label>
+          <span>Range</span>
+          <select id="rangeFilter">
+            <option value="1">Daily</option>
+            <option value="7">Weekly</option>
+            <option value="31">Monthly</option>
+            <option value="93">3 months</option>
+            <option value="180">6 months</option>
+          </select>
+        </label>
+        <label>
+          <span>Transaction</span>
+          <select id="typeFilter">
+            <option value="all">All</option>
+            <option value="P">Purchases</option>
+            <option value="S">Sales</option>
+            <option value="A">Awards</option>
+            <option value="M">Option exercises</option>
+            <option value="F">Tax withholding</option>
+            <option value="C">Conversions</option>
+            <option value="D">Dispositions</option>
+            <option value="J">Other acquisition/disposition</option>
+            <option value="G">Gifts</option>
+            <option value="X">Option exercises</option>
+            <option value="I">Discretionary transactions</option>
+            <option value="U">Tender of shares</option>
+          </select>
+        </label>
+        <label>
+          <span>Minimum value</span>
+          <input id="minValue" type="number" min="0" step="10000" placeholder="0">
+        </label>
+      </section>
+
+      <section class="analytics-grid" aria-label="Additional summaries">
+        <div class="analytics-panel ticker-summary-panel">
+          <span class="label">Ticker summary</span>
+          <div id="tickerSummary" class="ticker-summary"></div>
+        </div>
+        <div class="analytics-panel">
+          <span class="label">Transaction mix</span>
+          <div id="transactionMix" class="mix-list"></div>
+        </div>
+        <div class="analytics-panel">
+          <span class="label">Role mix</span>
+          <div id="roleMix" class="mix-list"></div>
+        </div>
+      </section>
+
+      <section class="table-wrap" aria-live="polite">
+        <div id="status" class="status">Loading recent filings...</div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Ticker</th>
+              <th>Issuer</th>
+              <th>Insider</th>
+              <th>Action</th>
+              <th class="numeric">Shares</th>
+              <th class="numeric">Holding sold</th>
+              <th class="numeric">Price</th>
+              <th class="numeric">Value</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="transactions"></tbody>
+        </table>
+      </section>
+    </main>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

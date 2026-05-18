@@ -1,0 +1,11 @@
+certs/
+data/
+logs/
+node_modules/
+npm-debug.log
+server.runtime.log
+server.out.log
+server.err.log
+.env
+.git/
+.gitignore
